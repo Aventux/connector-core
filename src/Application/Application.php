@@ -183,7 +183,6 @@ class Application
         if (!\is_dir($connectorDir)) {
             throw ApplicationException::connectorDirNotExists($connectorDir);
         }
-        AnnotationRegistry::registerLoader('class_exists');
 
         if ($configSchema !== null && $config !== null) {
             if ($config instanceof ConfigSchemaConfigInterface) {
@@ -210,7 +209,6 @@ class Application
         $this->config       = $config;
         $this->configSchema = $configSchema;
         $this->container    = (new ContainerBuilder())
-            ->useAnnotations(true)
             ->useAutowiring(true)
             ->build();
 
